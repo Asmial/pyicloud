@@ -9,7 +9,7 @@ from six.moves.urllib.parse import urlencode  # pylint: disable=bad-option-value
 # fmt: on
 
 from datetime import datetime
-from pyicloud.exceptions import PyiCloudServiceNotActivatedException
+from pyicloud.exceptions import PyiCloudServiceNotActivatedException, PyiCloudAPIResponseException
 from pytz import UTC
 
 
@@ -243,6 +243,9 @@ class PhotosService(object):
                 'filename': filename,
                 'dsid': self.params['dsid'],
             })
+
+        if 'errors' in request.json():
+            raise PyiCloudAPIResponseException('', request.json()['errors'])
 
         return [x['recordName'] for x in request.json()['records'] if x['recordType'] == 'CPLAsset'][0]
 
