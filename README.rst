@@ -344,6 +344,14 @@ To download a specific version of the photo asset, pass the version to ``downloa
 >>> with open(photo.versions['thumb']['filename'], 'wb') as thumb_file:
         thumb_file.write(download.raw.read())
 
+To delete a photo asset, call the delete method
+>>> photo.delete()
+Or use the delete many option (uses one REST call)
+>>> api.photos.delete_many([photo1.asset_id, photo2.asset_id])
+
+To upload an image
+>>> api.photos.upload_file(file_path)
+
 
 Code samples
 ============
