@@ -235,7 +235,6 @@ class PhotosService:
         with open(path, 'rb') as file_obj:
             request = self.session.post(url, data=file_obj.read(), params={
                 'filename': filename,
-                'dsid': self.params['dsid'],
             })
 
         if 'errors' in request.json():
