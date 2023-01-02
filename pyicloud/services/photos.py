@@ -4,13 +4,8 @@ import json
 import base64
 from urllib.parse import urlencode
 
-# fmt: off
-from six.moves.urllib.parse import urlencode  # pylint: disable=bad-option-value,relative-import
-# fmt: on
-
 from datetime import datetime, timezone
 from pyicloud.exceptions import PyiCloudServiceNotActivatedException, PyiCloudAPIResponseException
-from pytz import UTC
 
 class PhotosService:
     """The 'Photos' iCloud service."""
